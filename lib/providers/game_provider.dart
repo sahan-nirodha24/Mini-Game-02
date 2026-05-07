@@ -20,6 +20,9 @@ class GameProvider with ChangeNotifier {
   int _flagsUsed = 0;
   int? _bestScore;
   bool _isFirstMove = true;
+  bool _isSoundEnabled = true;
+  bool _isHapticEnabled = true;
+  ThemeMode _themeMode = ThemeMode.system;
 
   Difficulty get difficulty => _difficulty;
   List<List<Cell>> get board => _board;
@@ -27,9 +30,49 @@ class GameProvider with ChangeNotifier {
   int get secondsElapsed => _secondsElapsed;
   int get flagsRemaining => _difficulty.mines - _flagsUsed;
   int? get bestScore => _bestScore;
+  bool get isSoundEnabled => _isSoundEnabled;
+  bool get isHapticEnabled => _isHapticEnabled;
+  ThemeMode get themeMode => _themeMode;
 
   GameProvider() {
+    _loadSettings();
     _loadBestScore();
+  }
+
+  Future<void> _loadSettings() async {
+    final prefs = await SharedPreferences.getInstance();
+    _isSoundEnabled = prefs.getBool('sound_enabled') ?? true;
+    _isHapticEnabled = prefs.getBool('haptic_enabled') ?? true;
+    
+    final savedTheme = prefs.getString('theme_mode');
+    if (savedTheme != null) {
+      _themeMode = ThemeMode.values.firstWhere(
+        (e) => e.toString() == savedTheme,
+        orElse: () => ThemeMode.system,
+      );
+    }
+    notifyListeners();
+  }
+
+  Future<void> setThemeMode(ThemeMode mode) async {
+    _themeMode = mode;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('theme_mode', mode.toString());
+    notifyListeners();
+  }
+
+  Future<void> toggleSound() async {
+    _isSoundEnabled = !_isSoundEnabled;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('sound_enabled', _isSoundEnabled);
+    notifyListeners();
+  }
+
+  Future<void> toggleHaptic() async {
+    _isHapticEnabled = !_isHapticEnabled;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('haptic_enabled', _isHapticEnabled);
+    notifyListeners();
   }
 
   Future<void> _loadBestScore() async {
@@ -120,16 +163,20 @@ class GameProvider with ChangeNotifier {
     _status = GameStatus.won;
     _timer?.cancel();
     _saveBestScore();
-    _audioService.playWin();
+    if (_isSoundEnabled) {
+      _audioService.playWin();
+    }
   }
 
   void _loseGame() async {
     _status = GameStatus.lost;
     _timer?.cancel();
     
-    _audioService.playExplosion().catchError((e) {
-      debugPrint('Explosion sound failed: $e');
-    });
+    if (_isSoundEnabled) {
+      _audioService.playExplosion().catchError((e) {
+        debugPrint('Explosion sound failed: $e');
+      });
+    }
 
     for (int r = 0; r < _board.length; r++) {
       for (int c = 0; c < _board[0].length; c++) {

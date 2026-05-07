@@ -15,6 +15,7 @@ A sleek, minimalist, and fully-featured Minesweeper mobile game built with Flutt
     - **Expert**: 30x16 Grid, 99 Mines (with Panning & Zooming support).
 
 ### **User Experience**
+- **Settings Mode**: Customize your experience with toggles for sound effects and haptic feedback.
 - **Responsive UI**: Works perfectly on all screen sizes using a zoomable `InteractiveViewer` for larger boards.
 - **Animations**: Smooth scale-up animations for cell reveals and a "chain reaction" blast effect when game is lost.
 - **Audio Effects**: High-quality sound effects for explosions and victory.
@@ -71,4 +72,4 @@ lib/
 5. **Lose**: You tap on a mine!
 
 ---
-Developed with ❤️ by SAHAN
+Developed with ❤️ by Sahan Nirodha

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import '../models/cell.dart';
+import '../providers/game_provider.dart';
 
 class CellWidget extends StatefulWidget {
   final Cell cell;
@@ -61,13 +63,17 @@ class _CellWidgetState extends State<CellWidget> with SingleTickerProviderStateM
       behavior: HitTestBehavior.opaque,
       onTap: () {
         if (!widget.cell.isOpened && !widget.cell.isFlagged) {
-          HapticFeedback.lightImpact();
+          if (context.read<GameProvider>().isHapticEnabled) {
+            HapticFeedback.lightImpact();
+          }
           widget.onTap();
         }
       },
       onLongPress: () {
         if (!widget.cell.isOpened) {
-          HapticFeedback.mediumImpact();
+          if (context.read<GameProvider>().isHapticEnabled) {
+            HapticFeedback.mediumImpact();
+          }
           widget.onLongPress();
         }
       },
