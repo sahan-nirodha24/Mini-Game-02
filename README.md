@@ -9,6 +9,7 @@ A sleek, minimalist, and fully-featured Minesweeper mobile game built with Flutt
 - **Safe First Click**: Guaranteed that your first move will never hit a mine and will always open a safe area.
 - **Flood Fill Algorithm**: Automatically opens empty adjacent cells to speed up gameplay.
 - **Flagging System**: Long-press on any cell to place or remove a flag.
+- **Scoring System**: Earn 10 points for every safe cell opened. Track your real-time score during gameplay.
 - **Difficulty Levels**:
     - **Beginner**: 9x9 Grid, 10 Mines.
     - **Intermediate**: 16x16 Grid, 40 Mines.
@@ -21,9 +22,10 @@ A sleek, minimalist, and fully-featured Minesweeper mobile game built with Flutt
     - **Theme Selection**: Choose between Light, Dark, or System default themes.
 - **Responsive UI**: Works perfectly on all screen sizes using a zoomable `InteractiveViewer` for larger boards.
 - **Animations**: Smooth scale-up animations for cell reveals and a "chain reaction" blast effect when game is lost.
-- **Audio Effects**: High-quality sound effects for explosions and victory.
+- **Audio Effects**: High-quality local sound effects for explosions (`boom.mp3`) and victory.
 - **Haptic Feedback**: Tactile vibrations for tapping and flagging.
-- **High Scores**: Saves your best time for each difficulty level locally with an option to **Reset** them in settings.
+- **Polished UI**: Themed status bars and modern components for a premium feel.
+- **High Scores**: Saves your best time for each difficulty level locally with an option to **Reset** them in settings. Real-time "Best Time" display during the game.
 
 ## 🛠 Tech Stack
 
@@ -57,8 +59,8 @@ lib/
    
 3. **Add Assets:**
    Ensure you have the following files in `assets/sounds/`:
-   - `explosion.mp3`
-   - `win.mp3`
+   - `boom.mp3` (Explosion)
+   - `win.mp3` (Victory)
 
 4. **Run the app:**
    ```bash
