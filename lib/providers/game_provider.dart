@@ -36,6 +36,16 @@ class GameProvider with ChangeNotifier {
   bool get isTapToFlag => _isTapToFlag;
   ThemeMode get themeMode => _themeMode;
 
+  int get currentScore {
+    int count = 0;
+    for (var row in _board) {
+      for (var cell in row) {
+        if (cell.isOpened && !cell.isMine) count++;
+      }
+    }
+    return count * 10; // Each safe cell is 10 points
+  }
+
   GameProvider() {
     _loadSettings();
     _loadBestScore();

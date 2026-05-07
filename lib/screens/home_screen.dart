@@ -19,54 +19,54 @@ class HomeScreen extends StatelessWidget {
       ),
       child: Scaffold(
         extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings, color: Colors.white),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const SettingsScreen()),
-              );
-            },
-          ),
-        ],
-      ),
-      body: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Colors.blue.shade800, Colors.blue.shade400],
-          ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.brightness_7, size: 80, color: Colors.white),
-            const SizedBox(height: 20),
-            const Text(
-              'MINESWEEPER',
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                letterSpacing: 4,
-              ),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.settings, color: Colors.white),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SettingsScreen()),
+                );
+              },
             ),
-            const SizedBox(height: 50),
-            _buildDifficultyButton(context, Difficulty.beginner),
-            _buildDifficultyButton(context, Difficulty.intermediate),
-            _buildDifficultyButton(context, Difficulty.expert),
           ],
         ),
+        body: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Colors.blue.shade800, Colors.blue.shade400],
+            ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.brightness_7, size: 80, color: Colors.white),
+              const SizedBox(height: 20),
+              const Text(
+                'MINESWEEPER',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  letterSpacing: 4,
+                ),
+              ),
+              const SizedBox(height: 50),
+              _buildDifficultyButton(context, Difficulty.beginner),
+              _buildDifficultyButton(context, Difficulty.intermediate),
+              _buildDifficultyButton(context, Difficulty.expert),
+            ],
+          ),
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   Widget _buildDifficultyButton(BuildContext context, Difficulty difficulty) {
     return Padding(
@@ -88,16 +88,9 @@ class HomeScreen extends StatelessWidget {
             MaterialPageRoute(builder: (context) => const GameScreen()),
           );
         },
-        child: Consumer<GameProvider>(
-          builder: (context, provider, child) {
-            // This is a bit tricky because provider's bestScore depends on currently selected difficulty
-            // but we want to show it for each button.
-            // For now, let's just keep it simple or fetch it specifically.
-            return Text(
-              difficulty.name,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            );
-          },
+        child: Text(
+          difficulty.name,
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
       ),
     );

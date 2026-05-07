@@ -78,6 +78,10 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   void _showGameEndDialog(BuildContext context, String title, IconData icon, Color color) {
+    final provider = Provider.of<GameProvider>(context, listen: false);
+    final time = provider.secondsElapsed;
+    final best = provider.bestScore;
+
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -90,9 +94,29 @@ class _GameScreenState extends State<GameScreen> {
             Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
           ],
         ),
-        content: const Text(
-          'Would you like to play again?',
-          textAlign: TextAlign.center,
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'Score: ${provider.currentScore}',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: color),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Time: ${_formatDuration(time)}',
+              style: const TextStyle(fontSize: 18),
+            ),
+            if (best != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Text(
+                  'Best Time: ${_formatDuration(best)}',
+                  style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
+                ),
+              ),
+            const SizedBox(height: 20),
+            const Text('Would you like to play again?'),
+          ],
         ),
         actionsAlignment: MainAxisAlignment.center,
         actions: [
@@ -120,7 +144,16 @@ class _GameScreenState extends State<GameScreen> {
     ).then((_) {
       // If dialog is dismissed via other means (not likely with barrierDismissible: false)
       // but good for safety if we ever change it.
+    }).then((_) {
+      // If dialog is dismissed via other means (not likely with barrierDismissible: false)
+      // but good for safety if we ever change it.
     });
+  }
+
+  String _formatDuration(int seconds) {
+    int minutes = seconds ~/ 60;
+    int remainingSeconds = seconds % 60;
+    return '${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}';
   }
 
   void _showPauseMenu(BuildContext context) {
