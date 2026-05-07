@@ -32,6 +32,13 @@ class SettingsScreen extends StatelessWidget {
                 onChanged: (value) => provider.toggleHaptic(),
                 activeColor: Colors.blue.shade800,
               ),
+              SwitchListTile(
+                title: const Text('Tap to Flag'),
+                subtitle: const Text('Tap to place flags, long-press to open'),
+                value: provider.isTapToFlag,
+                onChanged: (value) => provider.toggleTapToFlag(),
+                activeColor: Colors.blue.shade800,
+              ),
               ListTile(
                 title: const Text('Appearance'),
                 subtitle: const Text('Dark, Light, or System'),
@@ -49,6 +56,14 @@ class SettingsScreen extends StatelessWidget {
                     );
                   }).toList(),
                 ),
+              ),
+              const Divider(),
+              _buildSectionHeader('Data'),
+              ListTile(
+                title: const Text('Reset High Scores', style: TextStyle(color: Colors.red)),
+                subtitle: const Text('Clear all your best times'),
+                leading: const Icon(Icons.delete_forever, color: Colors.red),
+                onTap: () => _showResetConfirmation(context, provider),
               ),
               const Divider(),
               _buildSectionHeader('About'),
@@ -78,6 +93,32 @@ class SettingsScreen extends StatelessWidget {
           color: Colors.blue.shade800,
           letterSpacing: 1.2,
         ),
+      ),
+    );
+  }
+
+  void _showResetConfirmation(BuildContext context, GameProvider provider) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Reset High Scores?'),
+        content: const Text('This will permanently delete all your best times for all difficulty levels.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('CANCEL'),
+          ),
+          TextButton(
+            onPressed: () {
+              provider.resetHighScores();
+              Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('High scores reset successfully')),
+              );
+            },
+            child: const Text('RESET', style: TextStyle(color: Colors.red)),
+          ),
+        ],
       ),
     );
   }

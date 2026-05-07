@@ -59,22 +59,26 @@ class _CellWidgetState extends State<CellWidget> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.read<GameProvider>();
+    
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
-        if (!widget.cell.isOpened && !widget.cell.isFlagged) {
-          if (context.read<GameProvider>().isHapticEnabled) {
-            HapticFeedback.lightImpact();
-          }
-          widget.onTap();
+        if (widget.cell.isOpened) return;
+        
+        if (provider.isTapToFlag) {
+          _handleFlag(provider);
+        } else {
+          _handleOpen(provider);
         }
       },
       onLongPress: () {
-        if (!widget.cell.isOpened) {
-          if (context.read<GameProvider>().isHapticEnabled) {
-            HapticFeedback.mediumImpact();
-          }
-          widget.onLongPress();
+        if (widget.cell.isOpened) return;
+
+        if (provider.isTapToFlag) {
+          _handleOpen(provider);
+        } else {
+          _handleFlag(provider);
         }
       },
       child: Container(
@@ -97,6 +101,22 @@ class _CellWidgetState extends State<CellWidget> with SingleTickerProviderStateM
         ),
       ),
     );
+  }
+
+  void _handleOpen(GameProvider provider) {
+    if (!widget.cell.isFlagged) {
+      if (provider.isHapticEnabled) {
+        HapticFeedback.lightImpact();
+      }
+      widget.onTap();
+    }
+  }
+
+  void _handleFlag(GameProvider provider) {
+    if (provider.isHapticEnabled) {
+      HapticFeedback.mediumImpact();
+    }
+    widget.onLongPress();
   }
 
   Color _getCellColor() {

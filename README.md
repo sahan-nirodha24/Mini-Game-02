@@ -15,13 +15,15 @@ A sleek, minimalist, and fully-featured Minesweeper mobile game built with Flutt
     - **Expert**: 30x16 Grid, 99 Mines (with Panning & Zooming support).
 
 ### **User Experience**
-- **Settings Mode**: Customize your experience with toggles for sound effects and haptic feedback.
+- **Settings Mode**: Customize your experience with:
+    - **Sound & Haptics**: Toggle audio effects and tactile feedback.
+    - **Control Mode**: Switch between "Long-press to Flag" and "Tap to Flag" for faster gameplay.
+    - **Theme Selection**: Choose between Light, Dark, or System default themes.
 - **Responsive UI**: Works perfectly on all screen sizes using a zoomable `InteractiveViewer` for larger boards.
 - **Animations**: Smooth scale-up animations for cell reveals and a "chain reaction" blast effect when game is lost.
 - **Audio Effects**: High-quality sound effects for explosions and victory.
 - **Haptic Feedback**: Tactile vibrations for tapping and flagging.
-- **Dark Mode Support**: Automatically switches between light and dark themes based on system settings.
-- **High Scores**: Saves your best time for each difficulty level locally using `SharedPreferences`.
+- **High Scores**: Saves your best time for each difficulty level locally with an option to **Reset** them in settings.
 
 ## 🛠 Tech Stack
 
@@ -65,8 +67,12 @@ lib/
    
 ## 🎮 How to Play
 
-1. **Tap**: Open a cell.
-2. **Long Press**: Place a flag on a suspected mine.
+1. **Default Mode**: 
+   - **Tap**: Open a cell.
+   - **Long Press**: Place a flag.
+2. **Tap to Flag Mode** (Enable in Settings):
+   - **Tap**: Place a flag.
+   - **Long Press**: Open a cell.
 3. **Goal**: Open all cells that do not contain mines.
 4. **Win**: All safe cells are opened.
 5. **Lose**: You tap on a mine!

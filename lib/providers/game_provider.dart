@@ -22,6 +22,7 @@ class GameProvider with ChangeNotifier {
   bool _isFirstMove = true;
   bool _isSoundEnabled = true;
   bool _isHapticEnabled = true;
+  bool _isTapToFlag = false;
   ThemeMode _themeMode = ThemeMode.system;
 
   Difficulty get difficulty => _difficulty;
@@ -32,6 +33,7 @@ class GameProvider with ChangeNotifier {
   int? get bestScore => _bestScore;
   bool get isSoundEnabled => _isSoundEnabled;
   bool get isHapticEnabled => _isHapticEnabled;
+  bool get isTapToFlag => _isTapToFlag;
   ThemeMode get themeMode => _themeMode;
 
   GameProvider() {
@@ -43,6 +45,7 @@ class GameProvider with ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     _isSoundEnabled = prefs.getBool('sound_enabled') ?? true;
     _isHapticEnabled = prefs.getBool('haptic_enabled') ?? true;
+    _isTapToFlag = prefs.getBool('tap_to_flag') ?? false;
     
     final savedTheme = prefs.getString('theme_mode');
     if (savedTheme != null) {
@@ -72,6 +75,22 @@ class GameProvider with ChangeNotifier {
     _isHapticEnabled = !_isHapticEnabled;
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('haptic_enabled', _isHapticEnabled);
+    notifyListeners();
+  }
+
+  Future<void> toggleTapToFlag() async {
+    _isTapToFlag = !_isTapToFlag;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('tap_to_flag', _isTapToFlag);
+    notifyListeners();
+  }
+
+  Future<void> resetHighScores() async {
+    final prefs = await SharedPreferences.getInstance();
+    for (var d in Difficulty.values) {
+      await prefs.remove('best_score_${d.name}');
+    }
+    _bestScore = null;
     notifyListeners();
   }
 
