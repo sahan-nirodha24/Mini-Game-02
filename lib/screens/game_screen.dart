@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import '../providers/game_provider.dart';
 import '../widgets/game_board.dart';
@@ -16,34 +17,41 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey.shade100,
-      appBar: AppBar(
-        title: const Text('Minesweeper'),
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.black,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.pause),
-            onPressed: () => _showPauseMenu(context),
-          ),
-        ],
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarColor: Colors.blue.shade800,
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: TopBar(),
+      child: Scaffold(
+        backgroundColor: Colors.grey.shade100,
+        appBar: AppBar(
+          title: const Text('Minesweeper'),
+          elevation: 0,
+          backgroundColor: Colors.blue.shade800,
+          foregroundColor: Colors.white,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.pause),
+              onPressed: () => _showPauseMenu(context),
             ),
-            const Expanded(
-              child: Center(
-                child: GameBoard(),
-              ),
-            ),
-            _buildStatusListener(),
           ],
+        ),
+        body: SafeArea(
+          child: Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: TopBar(),
+              ),
+              const Expanded(
+                child: Center(
+                  child: GameBoard(),
+                ),
+              ),
+              _buildStatusListener(),
+            ],
+          ),
         ),
       ),
     );
