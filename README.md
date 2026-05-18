@@ -27,6 +27,12 @@ A sleek, minimalist, and fully-featured Minesweeper mobile game built with Flutt
 - **Polished UI**: Themed status bars and modern components for a premium feel.
 - **High Scores**: Saves your best time for each difficulty level locally with an option to **Reset** them in settings. Real-time "Best Time" display during the game.
 
+## 📸 Screenshots
+
+| Home Screen | Game Play | Settings |
+|:---:|:---:|:---:|
+| ![Home Screen](screenshots/home.png) | ![Game Play](screenshots/game.png) | ![Settings](screenshots/settings.png) |
+
 ## 🛠 Tech Stack
 
 - **Framework**: [Flutter](https://flutter.dev)
