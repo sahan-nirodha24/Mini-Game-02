@@ -29,9 +29,20 @@ A sleek, minimalist, and fully-featured Minesweeper mobile game built with Flutt
 
 ## 📸 Screenshots
 
-| Home Screen | Game Play | Settings |
-|:---:|:---:|:---:|
-| ![Home Screen](screenshots/home.png) | ![Game Play](screenshots/game.png) | ![Settings](screenshots/settings.png) |
+**Minesweeper Game Home Page**
+<img width="1918" height="1020" alt="Image" src="https://github.com/user-attachments/assets/127a5300-dcee-4296-ba1e-406592f9d827" />
+
+**Minesweeper Game Settings Page**
+<img width="1918" height="1019" alt="Image" src="https://github.com/user-attachments/assets/f113018b-4964-4bd1-be9f-016ab5b9a99b" />
+
+**Minesweeper Game Beginner Mode**
+<img width="1918" height="1020" alt="Image" src="https://github.com/user-attachments/assets/affe6c0f-b7c4-4dcf-91ca-74b0c9a80c7a" />
+
+**Minesweeper Game Intermediate Mode**
+<img width="1918" height="1019" alt="Image" src="https://github.com/user-attachments/assets/18f7c455-39f0-4f1e-91e2-929f2015caf4" />
+
+**Minesweeper Game Expert Mode**
+<img width="1918" height="1020" alt="Image" src="https://github.com/user-attachments/assets/7611dc48-3cca-4d3c-8682-890154ac6408" />
 
 ## 🛠 Tech Stack
 
