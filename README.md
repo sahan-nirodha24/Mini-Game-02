@@ -1,100 +1,80 @@
-# 💣 Modern Minesweeper - Flutter
+# 💣 Modern Minesweeper
 
-A sleek, minimalist, and fully-featured Minesweeper mobile game built with Flutter. This project follows modern development practices, including clean architecture and reactive state management.
+<p align="left">
+  <img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white" />
+  <img src="https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white" />
+  <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" />
+  <img src="https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white" />
+</p>
 
-## 🚀 Features
+A sleek, minimalist, and high-performance Minesweeper mobile application built using **Flutter**. This project demonstrates modern development practices, including clean architecture, reactive state management with Provider, and a polished user experience.
 
-### **Gameplay**
-- **Dynamic Board Generation**: Mines are placed randomly only after the first click to ensure a fair start.
-- **Safe First Click**: Guaranteed that your first move will never hit a mine and will always open a safe area.
-- **Flood Fill Algorithm**: Automatically opens empty adjacent cells to speed up gameplay.
-- **Flagging System**: Long-press on any cell to place or remove a flag.
-- **Scoring System**: Earn 10 points for every safe cell opened. Track your real-time score during gameplay.
-- **Difficulty Levels**:
-    - **Beginner**: 9x9 Grid, 10 Mines.
-    - **Intermediate**: 16x16 Grid, 40 Mines.
-    - **Expert**: 30x16 Grid, 99 Mines (with Panning & Zooming support).
-
-### **User Experience**
-- **Settings Mode**: Customize your experience with:
-    - **Sound & Haptics**: Toggle audio effects and tactile feedback.
-    - **Control Mode**: Switch between "Long-press to Flag" and "Tap to Flag" for faster gameplay.
-    - **Theme Selection**: Choose between Light, Dark, or System default themes.
-- **Responsive UI**: Works perfectly on all screen sizes using a zoomable `InteractiveViewer` for larger boards.
-- **Animations**: Smooth scale-up animations for cell reveals and a "chain reaction" blast effect when game is lost.
-- **Audio Effects**: High-quality local sound effects for explosions (`boom.mp3`) and victory.
-- **Haptic Feedback**: Tactile vibrations for tapping and flagging.
-- **Polished UI**: Themed status bars and modern components for a premium feel.
-- **High Scores**: Saves your best time for each difficulty level locally with an option to **Reset** them in settings. Real-time "Best Time" display during the game.
+---
 
 ## 📸 Screenshots
 
-**Minesweeper Game Home Page**
-<img width="1918" height="1020" alt="Image" src="https://github.com/user-attachments/assets/127a5300-dcee-4296-ba1e-406592f9d827" />
+**🏠 Main Menu**  
+<img src="https://github.com/user-attachments/assets/127a5300-dcee-4296-ba1e-406592f9d827" width="200" />
 
-**Minesweeper Game Settings Page**
-<img width="1918" height="1019" alt="Image" src="https://github.com/user-attachments/assets/f113018b-4964-4bd1-be9f-016ab5b9a99b" />
+**⚙️ Settings**  
+<img src="https://github.com/user-attachments/assets/f113018b-4964-4bd1-be9f-016ab5b9a99b" width="200" />
 
-**Minesweeper Game Beginner Mode**
-<img width="1918" height="1020" alt="Image" src="https://github.com/user-attachments/assets/affe6c0f-b7c4-4dcf-91ca-74b0c9a80c7a" />
+**🟢 Beginner Mode**  
+<img src="https://github.com/user-attachments/assets/affe6c0f-b7c4-4dcf-91ca-74b0c9a80c7a" width="200" />
 
-**Minesweeper Game Intermediate Mode**
-<img width="1918" height="1019" alt="Image" src="https://github.com/user-attachments/assets/18f7c455-39f0-4f1e-91e2-929f2015caf4" />
+**🟡 Intermediate Mode**  
+<img src="https://github.com/user-attachments/assets/18f7c455-39f0-4f1e-91e2-929f2015caf4" width="200" />
 
-**Minesweeper Game Expert Mode**
-<img width="1918" height="1020" alt="Image" src="https://github.com/user-attachments/assets/7611dc48-3cca-4d3c-8682-890154ac6408" />
-
-## 🛠 Tech Stack
-
-- **Framework**: [Flutter](https://flutter.dev)
-- **State Management**: [Provider](https://pub.dev/packages/provider)
-- **Local Storage**: [Shared Preferences](https://pub.dev/packages/shared_preferences)
-- **Audio**: [Audioplayers](https://pub.dev/packages/audioplayers)
-
-## 📂 Project Structure
-```text
-lib/
-├── models/         # Data models (Cell, Difficulty)
-├── providers/      # State Management (Game Logic & UI State)
-├── services/       # Business Logic (Board Generation, Audio Service)
-├── screens/        # UI Screens (Home, Game)
-├── widgets/        # Reusable UI components (Cell, TopBar, Board)
-└── main.dart       # Entry point
-```
-
-## 📦 Installation & Setup
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/your-username/mini_game_02.git
-   ```
-   
-2. **Install dependencies:**
-   ```bash
-   flutter pub get
-   ```
-   
-3. **Add Assets:**
-   Ensure you have the following files in `assets/sounds/`:
-   - `boom.mp3` (Explosion)
-   - `win.mp3` (Victory)
-
-4. **Run the app:**
-   ```bash
-   flutter run
-   ```
-   
-## 🎮 How to Play
-
-1. **Default Mode**: 
-   - **Tap**: Open a cell.
-   - **Long Press**: Place a flag.
-2. **Tap to Flag Mode** (Enable in Settings):
-   - **Tap**: Place a flag.
-   - **Long Press**: Open a cell.
-3. **Goal**: Open all cells that do not contain mines.
-4. **Win**: All safe cells are opened.
-5. **Lose**: You tap on a mine!
+**🔴 Expert Mode**  
+<img src="https://github.com/user-attachments/assets/7611dc48-3cca-4d3c-8682-890154ac6408" width="200" />
 
 ---
-Developed with ❤️ by Sahan Nirodha
+
+## 🌟 Key Features
+
+### 🎮 Gameplay Excellence
+*   **Smart First Move**: Guaranteed safe start. The board is generated only after your first tap to ensure you never hit a mine on move one.
+*   **Advanced Algorithms**: Efficient Flood Fill for instant opening of empty cells.
+*   **Dynamic Difficulty**: Beginner (9x9), Intermediate (16x16), and Expert (30x16) with Pan & Zoom.
+*   **Scoring System**: Real-time tracking and local High Score persistence.
+
+### 🛠 User Customization
+*   **Control Modes**: Toggle between *Long-press* or *Tap to Flag*.
+*   **Theme Engine**: Full support for Light, Dark, and System themes.
+*   **Haptics & Audio**: Immersive feedback for a better gaming experience.
+*   **Fluid UI**: Built with `InteractiveViewer` for seamless interaction.
+
+---
+
+## 🚀 Tech Stack
+
+*   **Framework:** [Flutter](https://flutter.dev) | **Language:** [Dart](https://dart.dev)
+*   **State:** [Provider](https://pub.dev/packages/provider) | **Storage:** [Shared Preferences](https://pub.dev/packages/shared_preferences)
+*   **Audio:** [Audioplayers](https://pub.dev/packages/audioplayers)
+
+---
+
+## 📂 Project Architecture
+
+```text
+lib/
+├── models/         # Data structures
+├── providers/      # State management
+├── services/       # Core logic (Audio, Storage)
+├── screens/        # UI Views
+└── widgets/        # Reusable components
+```
+
+---
+
+## 🛠 Setup & Run
+
+```bash
+git clone https://github.com/your-username/mini_game_02.git
+flutter pub get
+flutter run
+```
+
+---
+
+Developed with ❤️ by **Sahan Nirodha**
