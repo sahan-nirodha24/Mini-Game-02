@@ -14,19 +14,19 @@ A sleek, minimalist, and high-performance Minesweeper mobile application built u
 ## 📸 Screenshots
 
 **🏠 Main Menu**  
-<img src="https://github.com/user-attachments/assets/127a5300-dcee-4296-ba1e-406592f9d827" width="200" />
+<img src="https://github.com/user-attachments/assets/127a5300-dcee-4296-ba1e-406592f9d827" width="100%" />
 
 **⚙️ Settings**  
-<img src="https://github.com/user-attachments/assets/f113018b-4964-4bd1-be9f-016ab5b9a99b" width="200" />
+<img src="https://github.com/user-attachments/assets/f113018b-4964-4bd1-be9f-016ab5b9a99b" width="100%" />
 
 **🟢 Beginner Mode**  
-<img src="https://github.com/user-attachments/assets/affe6c0f-b7c4-4dcf-91ca-74b0c9a80c7a" width="200" />
+<img src="https://github.com/user-attachments/assets/affe6c0f-b7c4-4dcf-91ca-74b0c9a80c7a" width="100%" />
 
 **🟡 Intermediate Mode**  
-<img src="https://github.com/user-attachments/assets/18f7c455-39f0-4f1e-91e2-929f2015caf4" width="200" />
+<img src="https://github.com/user-attachments/assets/18f7c455-39f0-4f1e-91e2-929f2015caf4" width="100%" />
 
 **🔴 Expert Mode**  
-<img src="https://github.com/user-attachments/assets/7611dc48-3cca-4d3c-8682-890154ac6408" width="200" />
+<img src="https://github.com/user-attachments/assets/7611dc48-3cca-4d3c-8682-890154ac6408" width="100%" />
 
 ---
 
